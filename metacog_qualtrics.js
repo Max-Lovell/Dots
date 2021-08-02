@@ -45,26 +45,21 @@ Qualtrics.SurveyEngine.addOnload(function () {
     jQuery("<div id = 'display_stage'></div>").appendTo('body');
 
 
-    var task_name = "metacog";
-    var sbj_id = "${e://Field/workerId}";
-    var save_url = "https://users.sussex.ac.uk/mel29/exp_data/save_data.php";
-    var data_dir = task_name;
-    var file_name = task_name + '_' + sbj_id; 
+var sbj_id = "${e://Field/workerId}";
+var save_url = "https://users.sussex.ac.uk/mel29/exp_data/save_data_hello.php";
 
-    // save function using jQuery */
-    function save_data_json() {
-        jQuery.ajax({
-            type: 'post',
-            cache: false,
-            url: save_url,
-            data: {
-                data_dir: data_dir,
-                file_name: file_name + '.json', // the file type should be added
-                exp_data: jsPsych.data.get().json()
-            }
-        });
-    }
-
+function save_data_json() {
+    jQuery.ajax({
+        method: 'POST',
+		dataType: 'json',
+        cache: false,
+        url: save_url,
+        data: {
+            file_name: sbj_id + '.json', // the file type should be added
+            exp_data: jsPsych.data.get().json()
+        }
+    });
+}
     /* Change 4: Wrapping jsPsych.init() in a function */
 function initExp() {
 
