@@ -19,11 +19,11 @@ Qualtrics.SurveyEngine.addOnload(function () {
     var requiredResources = [
         jslib_url + "jspsych.js",
         jslib_url + "plugins/jspsych-html-keyboard-response.js",
-		jslib_url + "plugins/jspsych-html-slider-response.js",
-		jslib_url + "plugins/jspsych-canvas-keyboard-response.js",
-		jslib_url + "plugins/jspsych-fullscreen.js"
+        jslib_url + "plugins/jspsych-html-slider-response.js",
+        jslib_url + "plugins/jspsych-canvas-keyboard-response.js",
+        jslib_url + "plugins/jspsych-fullscreen.js"
     ];
-	
+    
     function loadScript(idx) {
         console.log("Loading ", requiredResources[idx]);
         jQuery.getScript(requiredResources[idx], function () {
@@ -45,9 +45,9 @@ Qualtrics.SurveyEngine.addOnload(function () {
     jQuery("<div id = 'display_stage'></div>").appendTo('body');
 
 
-	var task_name = "metacog";
+    var task_name = "metacog";
     var sbj_id = "${e://Field/workerId}";
-    var save_url = "https://users.sussex.ac.uk/~mel29/exp_data/save_data.php";
+    var save_url = "https://users.sussex.ac.uk/mel29/exp_data/save_data.php";
     var data_dir = task_name;
     var file_name = task_name + '_' + sbj_id; 
 
@@ -75,7 +75,7 @@ function initExp() {
     var nDots = 4.25;
     var trial_num = 1;
     var block_num = 1;
-	//recommend 2 prac and 10 trial for testing
+    //recommend 2 prac and 10 trial for testing
     var num_prac = 2; //26 ; if testing, note trials 6 and 11 are used by staircase changes
     var num_trial =  10; //210 ; if testing, must be multiple of 5 as 5 blocks are used
     var num_total = num_prac+num_trial;
@@ -86,7 +86,7 @@ function initExp() {
       stimulus: `Welcome to the task!<br>
         We will now ask you to judge which of two images contains more dots, before asking you to rate your confidence in your judgement.<br>
         At the beginning of each trial, you will be presented with a black cross in the middle of the screen. Focus your attention on it. Then, two black boxes with a number of white dots will be flashed and you will be asked to judge which box had a higher number of dots.<br><br>
-        If the box on the <strong>left</strong> had more dots, <strong>press ${resp_keys[0]}</strong>.<br> If the box on the <strong>right</strong> had more dots, <strong>press ${resp_keys[1]}</strong>.<br><br>
+        If the box on the <strong>left</strong> had more dots, <strong>press  ` + resp_keys[0] + ` </strong>.<br> If the box on the <strong>right</strong> had more dots, <strong>press  ` + resp_keys[1] + ` </strong>.<br><br>
         Please respond quickly and to the best of your ability.<br>
         You will then rate your confidence in your judgement on a scale with the mouse.<br>
         Please do your best to rate your confidence accurately and do take advantage of the whole rating scale.<br><br>
@@ -137,7 +137,7 @@ function initExp() {
       type: 'html-keyboard-response',
       stimulus: `The task proper is divided into 5 blocks of 42 trials, where you 
                     can pause for a break before every block. There are no time limits on your responses to the dots and on your confidence ratings. <br><br>
-                    As a reminder: If the box on the left had more dots, <strong>press ${resp_keys[0]}</strong>. If the box on the right had more dots, <strong>press ${resp_keys[1]}</strong>.<br><br>
+                    As a reminder: If the box on the left had more dots, <strong>press  ` + resp_keys[0] + ` </strong>. If the box on the right had more dots, <strong>press  ` + resp_keys[1] + ` </strong>.<br><br>
                     Press spacebar to begin!`,
       choices: [' ']
     };
@@ -247,7 +247,7 @@ function initExp() {
                 console.log(nDots)
 
         },
-        prompt: `<p style="position:relative; top:150px"><strong>Press ${resp_keys[0]}</strong> if the box on the left had more dots.<br><strong>Press ${resp_keys[1]}</strong> if the box on the right had more dots.</p>`,
+        prompt: `<p style="position:relative; top:150px"><strong>Press  ` + resp_keys[0] + ` </strong> if the box on the left had more dots.<br><strong>Press  ` + resp_keys[1] + ` </strong> if the box on the right had more dots.</p>`,
         choices: jsPsych.NO_KEYS,
         trial_duration: 300,
         data: {
@@ -269,7 +269,7 @@ function initExp() {
                     ctx.fillRect(x_2, y_coord, squareWidth, squareWidth);
                 },
         choices: resp_keys,
-        prompt: `<p style="position:relative; top:150px"><strong>Press ${resp_keys[0]}</strong> if the box on the left had more dots.<br><strong>Press ${resp_keys[1]}</strong> if the box on the right had more dots.</p>`,
+        prompt: `<p style="position:relative; top:150px"><strong>Press  ` + resp_keys[0] + ` </strong> if the box on the left had more dots.<br><strong>Press  ` + resp_keys[1] + ` </strong> if the box on the right had more dots.</p>`,
         data: {
             task: 'trial',
             trial_number: trial_num,
@@ -341,8 +341,8 @@ function initExp() {
     var trial_break = {
         type: 'html-keyboard-response',
         stimulus: function(){ //must be a function to return the updated block_num
-            return `You can now pause for a break. You have completed ${block_num} out of 
-        5 blocks.<br><br> As a reminder:<br>If the box on the left had more dots, <strong>press ${resp_keys[0]}</strong>.<br> If the box on the right had more dots, <strong>press ${resp_keys[1]}</strong>.<br><br>Press spacebar to continue the task`},
+            return `You can now pause for a break. You have completed ` + block_num + ` out of 
+        5 blocks.<br><br> As a reminder:<br>If the box on the left had more dots, <strong>press  ` + resp_keys[0] + ` </strong>.<br> If the box on the right had more dots, <strong>press  ` + resp_keys[1] + ` </strong>.<br><br>Press spacebar to continue the task`},
         choices: [' '],
         on_finish: function(data){block_num++}
     };
@@ -368,10 +368,10 @@ function initExp() {
         type: 'with-replacement'
     };
 
-    //timeline.push({ //prompts full screen
-    //    type: 'fullscreen',
-    //    fullscreen_mode: true
-    //});
+   timeline.push({ //prompts full screen
+       type: 'fullscreen',
+       fullscreen_mode: true
+   });
 
     timeline.push(welcome, prac_intro, trial_procedure);
 
@@ -379,31 +379,29 @@ function initExp() {
       timeline: timeline,
       display_element: 'display_stage', //https://kywch.github.io/jsPsych-in-Qualtrics/hello-world/
         on_finish: function() {
-			
-			jsPsych.data.get().addToLast({participant: sbj_id});
+            
+            jsPsych.data.get().addToLast({participant: sbj_id});
             save_data_json();
-			
-            jsPsych.data.displayData(); //display all data
-			
-			// clear the stage
+            
+            // clear the stage
             jQuery('display_stage').remove();
             jQuery('display_stage_background').remove();
             // simulate click on Qualtrics "next" button, making use of the Qualtrics JS API
             qthis.clickNextButton();
         },
     });
-	}
+    }
 });
 
 
 Qualtrics.SurveyEngine.addOnReady(function()
 {
-	/*Place your JavaScript here to run when the page is fully displayed*/
+    /*Place your JavaScript here to run when the page is fully displayed*/
 
 });
 
 Qualtrics.SurveyEngine.addOnUnload(function()
 {
-	/*Place your JavaScript here to run when the page is unloaded*/
+    /*Place your JavaScript here to run when the page is unloaded*/
 
 });
