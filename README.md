@@ -7,6 +7,7 @@ Associated with the following study:
 - Reference: Lovell, M., & Dienes, Z. (2022). Minimal mindfulness of the world as an active control for a full mindfulness of mental states intervention: A Registered Report and Pilot study, in principle acceptance of version 4 by Peer Community in Registered Reports. https://osf.io/tx54k
 - Pre-print: https://psyarxiv.com/3umz7
 - PCI RR Recommendation: https://rr.peercommunityin.org/articles/rec?id=45
+- OSF Supplementary Materials: https://osf.io/vu2dk/
 - Data and analysis code: https://github.com/Max-Lovell/Mindfulness-of-Mental-States
 
 Different versions in the respository:
