@@ -13,4 +13,7 @@ Other Files
 - Various PHP files which are placed in a public_html server space which check the recieved file and send it on to a private server space (which should contain the .htaccess file). Used for WebService data and recieving data from the Dots task itself.
 - Windows Task Scheduler: After Qualtric's response export automation feature sends data to a server space each morning, the .bat file contains BASH code that will automatically to download that data to your local machine (ideally at a slightly later time). The XML file contains code to set up another scheduled task to run when the files are downloaded - i.e. sending emails to those who have missed a survey.
 
+note all file paths have been removed from the code.
+The code in this repository is free to use as you like.
+
 For any questions, message me at m.lovell [at] sussex [dot] ac [dot] uk
