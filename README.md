@@ -1,13 +1,16 @@
-# metacog
-Javascript code for running an online metacognition task and integrating this with qualtrics and a web server, based on the original code by Marion Rouault here: https://github.com/metacoglab/metacognition-task-online. This task essentially shows two boxes of dots to participants and asks them to state which box has the higher number of dots - along with confidence judgements in order to calculate metacognitive efficiency.
+# Dots task
+JavaScript code for running an online metacognition task and integrating this with qualtrics and a web server, based on the original code by Marion Rouault here: https://github.com/metacoglab/metacognition-task-online. This task essentially shows two boxes of flickering patterns of dots to participants and asks them to state which box has the higher number of dots - along with confidence judgements in order to calculate metacognitive efficiency.
 
-Set up for testing, the code runs 2 practice trials and 10 experimental trials, this can be changed by updating the num_prac and num_trial variables at the beggining.
+Several versions exist:
+- Browser: Written in jsPsych 7.1, can be run from your local computer or uploaded to a server space
+- Qualtrics: Written in jsPysch 6.3, for integration with a Qualtrics survey in line with the tutorial here: https://kywch.github.io/jsPsych-in-Qualtrics/
+- Qualtrics iFrame: Pipe the 'browser' version into qualtrics with the attached code.
+- DIY: This was an attempt at a vanilla JavaScript approach I hope to get round to finishing some day
+- PsychoPy: Also unfinished - my first attempt as I was learning to code
 
-1. metacog_main.html will run on your local machine although won't save any data.
+Other Files
+- Automated Emailer: This was done to get around Qualtric's restrictions on emails. It relies on a WebService task fired at the end of each survey which sends a URL with query strings embedded with information on the participant and survey, etc. The emailer.py then extracts the information and sends the correct survey (stored in emails.py) to that person if they have missed a survey day.
+- Various PHP files which are placed in a public_html server space which check the recieved file and send it on to a private server space (which should contain the .htaccess file). Used for WebService data and recieving data from the Dots task itself.
+- Windows Task Scheduler: After Qualtric's response export automation feature sends data to a server space each morning, the .bat file contains BASH code that will automatically to download that data to your local machine (ideally at a slightly later time). The XML file contains code to set up another scheduled task to run when the files are downloaded - i.e. sending emails to those who have missed a survey.
 
-2. I've also uploaded a qualtrics and qualtrics html file for integration with a qualtrics survey, inline with the guide I have written here: https://users.sussex.ac.uk/mel29/online_experiments.html, largely in line with the original guide here: https://kywch.github.io/jsPsych-in-Qualtrics/ - if you'd like to get this to work, you'll need to set up your own webspace and php file as directed in those guides.
-3. the python files are psyschoPy prototpye I started with - not quite st up right, but it works!
-4. metacog_save is a prototype for saving to one's local machine based on the tutorial at https://kywch.github.io/jsPsych-in-Qualtrics/, although might not work for now!
-
-
-For any questions, message me at m.lovell@sussex.ac.uk
+For any questions, message me at m.lovell [at] sussex [dot] ac [dot] uk
