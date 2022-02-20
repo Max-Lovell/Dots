@@ -13,7 +13,7 @@ Associated with the following study:
 Different versions in the respository:
 - Browser: Written in jsPsych 7.1, can be run from your local computer or uploaded to a server space
 - Qualtrics: Written in jsPysch 6.3, for integration with a Qualtrics survey
-- Qualtrics iFrame: Pipe the 'browser' version into qualtrics with the attached code.
+- Qualtrics iFrame: Pipe the 'browser' version into qualtrics with the attached code. (Unfinished as participant IDs aren't transferred to the server, and finish state doesn't move on the survey. Should be doable with query strings, however.)
 - DIY: This was an attempt at a vanilla JavaScript approach I hope to get round to finishing some day
 - PsychoPy: Also unfinished - my first attempt as I was learning to code
 
