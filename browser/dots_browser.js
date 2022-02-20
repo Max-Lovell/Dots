@@ -4,7 +4,7 @@ function save_data_json(dataset, data_length){
     jQuery.ajax({
         method: 'POST',
         cache: false,
-        url: "PHP_URL.php",
+        url: "https://[server_URL]/save_data_metacog.php",
         data: {
             file_name: "dots_" + sbj_id + data_length + ".json",
             exp_data: dataset
@@ -18,7 +18,7 @@ function save_data_csv(dataset, data_length){
     jQuery.ajax({
         method: 'POST',
         cache: false,
-        url: "PHP_URL.php",
+        url: "https://[server_URL]/save_data_metacog_csv.php",
         data: {
             file_name: "dots_" + sbj_id + data_length + ".csv",
             exp_data: dataset
