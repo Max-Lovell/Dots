@@ -25,7 +25,7 @@ Try out the program:
 - Browser version: https://users.sussex.ac.uk/mel29/experiments/metacog_dots/dots_browser_test.html
 - Qualtrics version: https://universityofsussex.eu.qualtrics.com/jfe/form/SV_aWTaRbGNGwf16lg
 - iFrame version: https://universityofsussex.eu.qualtrics.com/jfe/form/SV_3I8ucrkhlP52GIC
-- Qualtrics version with jsPsych v7 - if anyone can figure out why this doesn't work I'd love to know!: https://universityofsussex.eu.qualtrics.com/jfe/form/SV_3UXeLyDrOMusNi6
+- Qualtrics version with jsPsych v7 - if anyone can figure out why this isn't registering key presses, I'd love to know!: https://universityofsussex.eu.qualtrics.com/jfe/form/SV_3UXeLyDrOMusNi6
 
 Note all file paths have been removed from the code.
 The code in this repository is free to use as you like.
