@@ -1,7 +1,11 @@
 # Dots task
+
 JavaScript code for running an online metacognition task and integrating this with qualtrics and a web server, based on the original code by Marion Rouault here: https://github.com/metacoglab/metacognition-task-online. This task essentially shows two boxes of flickering patterns of dots to participants and asks them to state which box has the higher number of dots - along with confidence judgements in order to calculate metacognitive efficiency.
 
-Several versions exist:
+Try out the program here: https://users.sussex.ac.uk/mel29/experiments/metacog_dots/dots_browser_test.html
+Pre-print of the associated study: https://psyarxiv.com/3umz7
+
+Different versions in the reespository:
 - Browser: Written in jsPsych 7.1, can be run from your local computer or uploaded to a server space
 - Qualtrics: Written in jsPysch 6.3, for integration with a Qualtrics survey in line with the tutorial here: https://kywch.github.io/jsPsych-in-Qualtrics/
 - Qualtrics iFrame: Pipe the 'browser' version into qualtrics with the attached code.
