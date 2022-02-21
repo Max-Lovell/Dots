@@ -23,7 +23,7 @@ Other Files:
 - Windows Task Scheduler: Qualtric's response export automation feature sends data to a server space each morning, and along with the webservice files, the .bat file contains batch commands that will automatically download that data to your local machine (ideally at a slightly later time). The XML file contains code to set up another scheduled task to run when the files are downloaded - i.e. sending emails to those who have missed a survey.
 
 Try out the program: 
-- Browser version: https://users.sussex.ac.uk/mel29/experiments/metacog_dots/dots_browser_test.html
+- Browser version: https://users.sussex.ac.uk/mel29/experiments/metacog_dots/dots_browser.html
 - Qualtrics version: https://universityofsussex.eu.qualtrics.com/jfe/form/SV_aWTaRbGNGwf16lg
 - iFrame version: https://universityofsussex.eu.qualtrics.com/jfe/form/SV_3I8ucrkhlP52GIC
 - Qualtrics version with jsPsych v7 - if anyone can figure out why this isn't registering key presses, I'd love to know!: https://universityofsussex.eu.qualtrics.com/jfe/form/SV_3UXeLyDrOMusNi6
