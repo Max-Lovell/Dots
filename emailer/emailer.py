@@ -42,7 +42,7 @@ surveys = {'pre':['SV_6liqwhsa4LJndL7'],
 'post':['SV_a99FGPniDPAO6b3'],
 'materials':['SV_1Y1cpZndfWrXoEu']}
 
-file_list = glob.glob('C:/Users/max_l/OneDrive - University of Sussex/3. World Mental States Replication/analysis_main/data/webservice/*.json')
+file_list = glob.glob('[local_path]*.json')
 datal = []
 for file in file_list:
     f = open(file)
@@ -97,7 +97,7 @@ for index, row in dataset.iterrows():
     else:
         continue #these are used throughout just to be safe
 
-    survey_url = "https://universityofsussex.eu.qualtrics.com/jfe/form/" + survey_ID + "?RecipientEmail=" + row['email']
+    survey_url = "https://[sso].eu.qualtrics.com/jfe/form/" + survey_ID + "?RecipientEmail=" + row['email']
     
     #select which email to send
     if row['condition'] == 'control':
@@ -168,14 +168,14 @@ for index, row in dataset.iterrows():
     #gmail set up
     port =  465
     smtp_server =  "smtp.gmail.com"
-    sender_email =  "sussex.mindfulness.online@gmail.com" # "max.e.lovell@gmail.com" # 
-    password =  "Qark6mav" # "Nomdob"
+    sender_email =  "xxx" # 
+    password =  "xxx"
     #input("Type your password and press enter: ")
 
     #sussex webmail (outlook) setup
-    #port = 587 # 465 # 
-    #smtp_server = "smtp.sussex.ac.uk" # "smtp.office365.com" # 
-    #sender_email = "mel29@sussex.ac.uk"
+    #port = 465 # 
+    #smtp_server =  "smtp.office365.com" # 
+    #sender_email = "xxx"
     #password = "xxx" 
     
     receiver_email = row['email']
