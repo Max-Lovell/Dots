@@ -1,3 +1,12 @@
+#TO DO:
+    # pair with outlook
+    # keep some record of what's been received, sent, and not sent
+	# allow unsubscribing e.g. ${l://OptOutLink}
+    # email subjects lines
+    # collect time and send based on local time
+    # Base64 encoding urls: https://www.qualtrics.com/support/survey-platform/survey-module/survey-flow/standard-elements/passing-information-through-query-strings/#QEED
+    # careful about sussex's firewall: https://www.sussex.ac.uk/its/help/faq.php?faqid=1101
+
 import glob # for listing files
 import json # for reading files
 import pandas as pd # for creating a dataframe
@@ -33,7 +42,7 @@ surveys = {'pre':['SV_6liqwhsa4LJndL7'],
 'post':['SV_a99FGPniDPAO6b3'],
 'materials':['SV_1Y1cpZndfWrXoEu']}
 
-file_list = glob.glob('local_path/*.json')
+file_list = glob.glob('C:/Users/max_l/OneDrive - University of Sussex/3. World Mental States Replication/analysis_main/data/webservice/*.json')
 datal = []
 for file in file_list:
     f = open(file)
@@ -116,15 +125,27 @@ for index, row in dataset.iterrows():
             reminder = 'reminder_post'
         elif elapsed.days == 23:
             reminder = 'reminder_post_final' 
-    elif next_survey == 'post':
-        if elapsed.days == 3:
+    elif next_survey == 'post': #post test is sent immediately
+        if elapsed.days == 2:
             reminder = 'reminder_post'
-        elif elapsed.days == 4:
+        elif elapsed.days == 3:
             reminder = 'reminder_post_final'
         else:
             continue #if you've done 14 days you don't get drop-out reminders
-
-    elif elapsed.days == 3:
+    elif next_survey == 'day_1': #first day is sent immediately
+        if elapsed.days == 2:
+            reminder = 'reminder_days'
+        elif elapsed.days == 3:
+            reminder = 'reminder_days_final'
+        elif elapsed.days == 4: 
+            reminder = ''
+            email_body = 'dropout' # change body to dropout if 5 days
+        elif elapsed.days == 7:
+            reminder = 'reminder_dropout'
+            email_body = 'dropout'
+        else: #includes if days == 5,6, or >7
+            continue
+    elif elapsed.days == 3: #days 2-14 sent next morning
         reminder = 'reminder_days'
     elif elapsed.days == 4:
         reminder = 'reminder_days_final'
@@ -147,15 +168,15 @@ for index, row in dataset.iterrows():
     #gmail set up
     port =  465
     smtp_server =  "smtp.gmail.com"
-    sender_email =  "" 
-    password =  ""
+    sender_email =  "sussex.mindfulness.online@gmail.com" # "max.e.lovell@gmail.com" # 
+    password =  "Qark6mav" # "Nomdob"
     #input("Type your password and press enter: ")
 
     #sussex webmail (outlook) setup
-    #port = 465
-    #smtp_server = "smtp.office365.com"
-    #sender_email = ""
-    #password = ""
+    #port = 587 # 465 # 
+    #smtp_server = "smtp.sussex.ac.uk" # "smtp.office365.com" # 
+    #sender_email = "mel29@sussex.ac.uk"
+    #password = "xxx" 
     
     receiver_email = row['email']
 
@@ -181,19 +202,7 @@ for index, row in dataset.iterrows():
             sender_email, receiver_email, message.as_string()
         )
     print([row['email'],reminder,email_body])
-
-
-
-
-#TO DO:
-    # pair with outlook
-    # keep some record of what's been received, sent, and not sent
-	# allow unsubscribing e.g. ${l://OptOutLink}
-    # email subjects lines
-    # collect time and send based on local time
-    # Base64 encoding urls: https://www.qualtrics.com/support/survey-platform/survey-module/survey-flow/standard-elements/passing-information-through-query-strings/#QEED
-    # careful about sussex's firewall: https://www.sussex.ac.uk/its/help/faq.php?faqid=1101
-
+    
     # For sussex webmail:
     #with smtplib.SMTP(smtp_server, port) as server:
     #    server.ehlo()  # Can be omitted
