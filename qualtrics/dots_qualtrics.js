@@ -37,7 +37,7 @@ Qualtrics.SurveyEngine.addOnload(function(){
         jQuery.ajax({
             method: 'POST',
             cache: false,
-            url: "PHP_URL.php",
+            url: "[php_file_url]",
             data: {
                 file_name: "dots_" + sbj_id + data_length + ".json",
                 exp_data: dataset
@@ -51,7 +51,7 @@ Qualtrics.SurveyEngine.addOnload(function(){
         jQuery.ajax({
             method: 'POST',
             cache: false,
-            url: "PHP_URL.php",
+            url: "[php_file_url]",
             data: {
                 file_name: "dots_" + sbj_id + data_length + ".csv",
                 exp_data: dataset
@@ -239,20 +239,34 @@ Qualtrics.SurveyEngine.addOnload(function(){
             trial_duration: 150,
             stimulus: function(c){
                 //https://github.com/jspsych/jsPsych/issues/1536
+
                 if (trial_num > 2){ // if statement stops error being thrown with .correct property
-                    var two_trial_ago = jsPsych.data.get().filter({task: 'choice'}).last(2).values()[0].correct
+                    //two consecutive correct responses are needed to decrease stimulus intensity - after a change in intensity, start counting to 2 from 0 again
+                    let previous_accuracy = jsPsych.data.get().filter({task: 'choice'}).values()
+                    let accuracy_list = previous_accuracy.map(({correct})=>correct);
+                    //slice copies array to prevent editing original, then reverse it as findIndex finds first ocurrence
+                    var last_correct_count = accuracy_list.slice().reverse().findIndex(correct_trial => correct_trial === false); //arrow function passes each index of array from findIndex and tests for === false
+                    //If no incorrect trials and even trial number (findIndex returns -1 if none exist) OR last trial not false and number of correct trials since last incorrect response is an even number
+                    if((last_correct_count===-1 && trial_num % 2) || (last_correct_count > 0 && last_correct_count % 2 === 0)){
+                        var two_trial_ago = jsPsych.data.get().filter({task: 'choice'}).last(2).values()[0].correct
+                    } else {var two_trial_ago = false} //else pretend two trials ago was false anyway, so that intensity isn't changed.
                 };
+
                 if (trial_num > 1){
                     var one_trial_ago = jsPsych.data.get().filter({task: 'choice'}).last(1).values()[0].correct
                 };
+                
                 nDots = staircase(nDots, one_trial_ago, two_trial_ago, trial_num);
                 var target = jsPsych.timelineVariable('stimulus');
+                console.log(target)
                 //if(Math.random() < 0.5){ target = "left"} else { target = "right"}
                 drawStim(c,"dots",target, nDots_stim = Math.round(Math.exp(nDots)));
             },
             prompt: `<p style="font-size:20px;"><strong>Press  `+resp_keys[0]+` </strong> if the box on the left had more dots.<br><strong>Press  `+resp_keys[1]+` </strong> if the box on the right had more dots.</p>`,
             data: {task: 'dots'},
-            on_finish: function(data) {data.number_dots = nDots} //run in on_finish as functions are called before trial otherwise
+            on_finish: function(data) {data.number_dots = nDots
+                console.log(nDots)
+            } //run in on_finish as functions are called before trial otherwise
         }
 
         var dots_rep = {
