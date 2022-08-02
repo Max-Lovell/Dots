@@ -4,8 +4,8 @@ if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERV
         die( header( 'location: /error.php' ) );
     } //exit if URL accessed directly
 
-if($_SERVER['HTTP_ORIGIN'] == 'https://users.sussex.ac.uk') { //exit if not from uni server
-    header('Access-Control-Allow-Origin: https://users.sussex.ac.uk'); 
+if($_SERVER['HTTP_ORIGIN'] == '[YOUR SERVER SPACE]') { //exit if not from uni server
+    header('Access-Control-Allow-Origin: [YOUR SERVER SPACE]'); 
     header('Content-Type: application/json');
 
 if(!empty($_POST)){exit;};
@@ -60,7 +60,7 @@ if (isset($post_data['file_name']) == true) {
     $file_name = filter_var($file_name, FILTER_VALIDATE_REGEXP, array('options'=>array('regexp'=>'/^[0-9]{6}\_(dots)$/')));//\_(gabor|dots|breath|span)
 } else {exit;}
 
-file_put_contents("../../gfactor/tasks/$file_name.json", $data); //https://stackoverflow.com/questions/43519007/usage-of-http-raw-post-data
+file_put_contents("[PATH TO FOLDER OUTSIDE WWW ROOT]/$file_name.json", $data); //https://stackoverflow.com/questions/43519007/usage-of-http-raw-post-data
 //file_put_contents("globals.log", print_r($GLOBALS,true)); //see what file should look like - good security to use the php file to check everything is as it should be in the globals.
 } else { exit; }
 
