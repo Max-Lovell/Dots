@@ -1,6 +1,10 @@
 # Dots task
 
-JavaScript code for running an online metacognition task and integrating this with qualtrics and a web server, based on the original code by Marion Rouault here: https://github.com/metacoglab/metacognition-task-online. This task essentially shows two boxes of flickering patterns of dots to participants and asks them to state which box has the higher number of dots - along with confidence judgements in order to calculate metacognitive efficiency. Integrated with Qualtrics with the help of https://kywch.github.io/jsPsych-in-Qualtrics/. When I get the time the full method for implementation I used will be found here: https://users.sussex.ac.uk/mel29/online_experiments/homepage.html
+JavaScript code for running an online metacognition task. This task shows two boxes with an array of dots for 150 ms each, 5 times, and so they appear to 'flicker'. The 'old' folder has versions in JSPsych 6 and 7, code for integration with Qualtrics, and PsychoPy. When I get the time the full method for implementation I used will be found here: https://users.sussex.ac.uk/mel29/online_experiments/homepage.html
+
+Note this code won't work out of the box yet, as the code was intentded to work within a larger study, but should be easily adaptable. It's also designed to work with a query string for how many pixels per cm there are on the users screen, with the credit card trick here: https://www.jspsych.org/7.0/plugins/resize/. 42 is a good enough estimate for a laptop, though. Also, all file paths have been removed from the code for security reasons and are indicated by square brackets.
+
+try it out here: https://users.sussex.ac.uk/mel29/dots/dots.html?px_cm?42
 
 Associated with the following study:
 - title: 'Minimal mindfulness of the world as an active control for a full mindfulness of mental states intervention: A Registered Report and Pilot study'
@@ -10,25 +14,6 @@ Associated with the following study:
 - OSF Supplementary Materials: https://osf.io/vu2dk/
 - Data and analysis code: https://github.com/Max-Lovell/Mindfulness-of-Mental-States
 
-Different versions in the respository:
-- Browser: Written in jsPsych 7.1, can be run from your local computer or uploaded to a server space
-- Qualtrics: Written in jsPysch 6.3, for integration with a Qualtrics survey
-- Qualtrics iFrame: Pipe the 'browser' version into qualtrics with the attached code. (Unfinished as participant IDs aren't transferred to the server, and finish state doesn't move on the survey. Should be doable with query strings, however.)
-- DIY: This was an attempt at a vanilla JavaScript approach I hope to get round to finishing some day
-- PsychoPy: Also unfinished - my first attempt as I was learning to code
-
-Other Files:
-- Automated Emailer: This was done to get around Qualtric's restrictions on emails. It relies on a WebService task fired at the end of each survey which sends a URL with query strings embedded with information on the participant and survey, etc. The emailer.py then extracts the information and sends the correct survey (stored in emails.py) to that person if they have missed a survey day.
-- Various PHP files which are placed in a public_html server space which check the recieved file and send it on to a private server space (which should contain the .htaccess file). Used for WebService data and recieving data from the Dots task itself.
-- Windows Task Scheduler: Qualtric's response export automation feature sends data to a server space each morning, and along with the webservice files, the .bat file contains batch commands that will automatically download that data to your local machine (ideally at a slightly later time). The XML file contains code to set up another scheduled task to run when the files are downloaded - i.e. sending emails to those who have missed a survey.
-
-Try out the program: 
-- Browser version: https://users.sussex.ac.uk/mel29/experiments/metacog_dots/dots_browser.html
-- Qualtrics version: https://universityofsussex.eu.qualtrics.com/jfe/form/SV_aWTaRbGNGwf16lg
-- iFrame version: https://universityofsussex.eu.qualtrics.com/jfe/form/SV_3I8ucrkhlP52GIC
-- Qualtrics version with jsPsych v7 - if anyone can figure out why this isn't registering key presses, I'd love to know!: https://universityofsussex.eu.qualtrics.com/jfe/form/SV_3UXeLyDrOMusNi6
-
-Note all file paths have been removed from the code.
 The code in this repository is free to use as you like.
 
-For any questions or suggestions feel free to message me at m.lovell [at] sussex [dot] ac [dot] uk
+For any questions or suggestions feel free to message me at m [dot] lovell [at] sussex [dot] ac [dot] uk
