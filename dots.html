@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dots task</title>
+        <link href="dots.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <p id="text_display">In this task you will be shown two boxes with different amount of dots in them.
+            The boxes will appear to flicker as they show 5 random arrangements of the dots.
+            <strong>Your task is to indicate which box has more dots in it.</strong><br><br>
+            The first 5 trials are practice trials with feedback<br><br>
+            After the practice trials you will be asked to rate your confidence in your response after every trial.<br><br>
+            Please press Spacebar or click anywhere to begin.</p>
+        <div id="fix_cross" hidden><span id="cross">+</span></div>
+        <div id="stim_container" hidden>
+            <div id="stim_grid">
+                <canvas class="stim" id="left"></canvas>
+                <canvas class="stim" id="right"></canvas>
+            </div>
+            <p id="prompt">Press <strong>e</strong> if the box on the left had more dots.<br>Press <strong>i</strong> if the box on the right had more dots.</p>
+        </div>
+        <div id="confidence_container" hidden>
+            <label for="confidence" id="confidence_label">Rate your confidence in your response:</label><br>
+                <span id="confidence_instructions">Click & drag the slider, or use the number keys (incl. either side of 1-9)<br>then press the 'enter' key, or click the button to submit.</span><br><br>
+                <input type="range" id="confidence" name="confidence" min="0" max="100" step="10" value="0"><br>
+                <span id="confidence_value">0%</span><br><br>
+                <input type="button" id="confidence_button" class="button" value="Submit">
+        </div>
+        <script src="dots.js"></script>
+    </body>
+</html>
