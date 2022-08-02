@@ -1,8 +1,8 @@
 # Dots task
 
-JavaScript code for running an online metacognition task. This task shows two boxes with an array of dots for 150 ms each, 5 times, and so they appear to 'flicker'. The 'old' folder has versions in JSPsych 6 and 7, code for integration with Qualtrics, and PsychoPy. When I get the time the full method for implementation I used will be found here: https://users.sussex.ac.uk/mel29/online_experiments/homepage.html
+JavaScript code for running an online metacognition task. This task shows two boxes with an array of dots for 150 ms each, 5 times, and so they appear to 'flicker'. User inputs can be keyboard, mouse, or touchscreen. The 'old' folder has versions in JSPsych 6 and 7, code for integration with Qualtrics, and PsychoPy. When I get the time the full method for implementation I used will be found here: https://users.sussex.ac.uk/mel29/online_experiments/homepage.html
 
-Note this code won't work out of the box yet, as the code was intentded to work within a larger study, but should be easily adaptable. It's also designed to work with a query string for how many pixels per cm there are on the users screen, with the credit card trick here: https://www.jspsych.org/7.0/plugins/resize/. 42 is a good enough estimate for a laptop, though. Also, all file paths have been removed from the code for security reasons and are indicated by square brackets.
+Note this code won't work out of the box yet, as the code was intentded to work within a larger study, but should be easily adaptable. It's also designed to work with a query string for how many pixels per cm there are on the users screen, with my implementation of the JSPsych 'resize' function - 42 is a good enough estimate for a laptop, though. Also, all file paths have been removed from the code for security reasons and are indicated by square brackets.
 
 try it out here: https://users.sussex.ac.uk/mel29/dots/dots.html?px_cm=42
 
