@@ -324,7 +324,7 @@ function saveData(sbj_id,next_task){
     xhr.onload = function() {
         next_task() //move on to next task
     }
-    xhr.open('POST', 'https://users.sussex.ac.uk/mel29/dots/dots.php', true)
+    xhr.open('POST', '[PHP FILE LOCTION]/dots.php', true)
     xhr.setRequestHeader('Content-Type', 'application/json')
     xhr.send(json_data)
 }
