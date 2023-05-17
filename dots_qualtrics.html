@@ -1,0 +1,119 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div id="display_stage">
+    <p id="text_display" class="centred">In this task you will be shown two boxes with different amount of dots in them.
+        The boxes will appear to flicker as they show 5 random arrangements of the dots.
+        <strong>Your task is to indicate which box has more dots in it.</strong><br><br>
+        The first 26 trials are practice trials with feedback. 
+        The subsequent 168 trials will be ask you to rate your confidence in your response.
+        Please try to use the entire confidence scale throughout the task if you can.<br><br>
+        Please press the spacebar or click anywhere to begin.
+    </p>
+    <div id="fix_cross" hidden><span id="cross"  class="centred">+</span></div>
+    <div id="stim_container"  class="centred" hidden>
+        <div id="stim_grid">
+            <canvas class="stim" id="left"></canvas>
+            <canvas class="stim" id="right"></canvas>
+        </div>
+        <p id="prompt">Press <strong>e</strong> if the box on the left had more dots.<br>
+            Press <strong>i</strong> if the box on the right had more dots.<br>
+            Or click/touch the box with more dots.
+        </p>
+    </div>
+    <div id="conf_cont" class="centred" hidden>
+        <label for="confidence" id="conf_lab">Rate your confidence in your response:</label><br>
+            <span id="conf_instr">Drag the slider, or use the number or arrow keys<br>then press 'Enter' or click the button to submit.</span><br><br>
+            <input type="range" id="conf_sl" name="confidence" min="1" max="6" value="1"><br>
+            <div id="likert_labs">
+                <span class="likert_item">Guessing</span>
+                <span class="likert_item">|</span>
+                <span class="likert_item">|</span>
+                <span class="likert_item">|</span>
+                <span class="likert_item">|</span>
+                <span>Certain</span>
+            </div><br>
+            <span id="conf_val">1</span><br><br>
+            <input type="button" id="conf_b" class="button" value="Submit">
+    </div>
+</div>
+<style>
+#display_stage {
+    position: absolute; 
+    top: 0; 
+    left: 0;
+    z-index: 999;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-family: sans-serif;
+    font-size:  4vmin; /* options: 2.5vmax 4vmin 25px*/
+    text-align: center;
+}
+
+.centred {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* instructions */
+#text_display { width: 70% }
+
+/* fixation cross */
+#fix_cross{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+}
+
+/* stim */
+#stim_grid {
+    display: grid;
+    grid-template-columns: min-content min-content;
+}
+
+.stim { background: black }
+#prompt{ font-size: 3vmin }
+
+/* confidence */
+#conf_cont { width: 100% }
+#conf_sl{ width: 50%; }
+/* .likert_item{ border-right: 1px solid grey; } */
+
+#likert_labs{
+    width: 60%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3vmin;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+#conf_instr{ 
+    font-style: italic; 
+    font-size: 80%;
+}
+
+.button {
+    background-color: rgb(80, 80, 80); /*53, 115, 47*/
+    color: white;
+    border: none;
+    padding: 12px 29px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: rgb(200, 200, 200);
+    color: rgb(51, 51, 51);
+}
+
+@media (max-width: 600px)  { 
+    #conf_sl{ width: 85%; }
+    #likert_labs{ width: 95%; }
+    #prompt{ font-size: 4vmin; }
+}
+
+</style>
