@@ -1,64 +1,58 @@
 html, body {
-    font-family: 'Raleway', sans-serif;
+    height: 100%;
+    width: 100%;
     margin: 0;
+    font-family: sans-serif;
+    font-size:  4vmin; /* options: 2.5vmax 4vmin 25px*/
     text-align: center;
-    font-size: 20px;
 }
 
-/* instructions */
-#text_display {
+.centred {
     position: absolute;
-    width: 70%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 25px;
 }
+
+/* instructions */
+#text_display { width: 70% }
 
 /* fixation cross */
 #fix_cross{
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 25px;
-}
-
-#cross{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    font-size: 30px;
 }
 
 /* stim */
-#stim_container{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
 #stim_grid {
     display: grid;
     grid-template-columns: min-content min-content;
 }
 
-.stim {
-    background: black;
-}
+.stim { background: black }
+#prompt{ font-size: 3vmin }
 
 /* confidence */
-#confidence_container {
-    position: absolute;
-    top: 50%;
+#conf_cont { width: 100% }
+#conf_sl{ width: 50%; }
+.likert_item{ border-right: 1px solid grey; }
+
+#likert_labs{
+    width: 60%;
+    position: relative;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
+    transform: translateX(-50%);
+    font-size: 3vmin;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
 }
 
-#confidence_label { font-size: 25px; }
-#confidence_instructions{ font-style: italic; }
-#confidence{ width: 250px; }
+#conf_instr{ 
+    font-style: italic; 
+    font-size: 80%;
+}
 
 .button {
     background-color: rgb(80, 80, 80); /*53, 115, 47*/
@@ -75,5 +69,7 @@ html, body {
 }
 
 @media (max-width: 600px)  { 
-    
+    #conf_sl{ width: 85%; }
+    #likert_labs{ width: 95%; }
+    #prompt{ font-size: 4vmin; }
 }
